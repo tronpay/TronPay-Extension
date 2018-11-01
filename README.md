@@ -40,4 +40,5 @@ More `TronWeb` document can found in [Tron NetWork Official](https://github.com/
 * Twitter: https://twitter.com/TronPayOfficia1
 
 ## License
-TronPay is [MIT](https://mit-license.org/) licensed
+
+TronPay is [MIT](./LICENSE) licensed
