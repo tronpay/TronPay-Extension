@@ -50,6 +50,8 @@ module.exports = {
     privateKeyOnly: 'The private key will be the only way you can retrieve your account',
     noMoreRecord: 'No more records',
     noRecord: 'No transaction record',
+    noWhiteList: 'No whiteList',
+    joinWhiteList: 'Add to white list, this site no longer prompts',
     warningPrivateKey: 'Security warning: do not disclose your private key to anyone',
     rechargeOnly: 'This address only supports TRX and its token',
     verifyPassword: 'You need to verify your current password first',
@@ -144,6 +146,7 @@ module.exports = {
   // settings
   settings: {
     network: 'Network',
+    whiteList: 'WhiteList',
     language: 'Language',
     modifyPassword: 'Password',
     lockSetting: 'Lock Setting',

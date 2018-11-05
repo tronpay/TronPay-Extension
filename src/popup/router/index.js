@@ -16,6 +16,7 @@ import LockSetting from '../pages/settings/lockSetting'
 import ModifyPassword from '../pages/settings/modifyPassword'
 import Network from '../pages/settings/network'
 import About from '../pages/settings/about'
+import WhiteList from '../pages/settings/whiteList'
 
 Vue.use(Router)
 
@@ -131,6 +132,14 @@ const routes = [
     path: '/about',
     name: 'about',
     component: About,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/whiteList',
+    name: 'whiteList',
+    component: WhiteList,
     meta: {
       requiresAuth: true
     }

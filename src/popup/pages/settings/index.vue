@@ -34,6 +34,7 @@ export default {
     return {
       links: [
         { route: 'network', name: this.$i18n.t('settings.network'), icon: 'network' },
+        { route: 'whiteList', name: this.$i18n.t('settings.whiteList'), icon: 'whiteList' },
         { route: 'language', name: this.$i18n.t('settings.language'), icon: 'language' },
         { route: 'modifyPassword', name: this.$i18n.t('settings.modifyPassword'), icon: 'password' },
         { route: 'lockSetting', name: this.$i18n.t('settings.lockSetting'), icon: 'lock' },

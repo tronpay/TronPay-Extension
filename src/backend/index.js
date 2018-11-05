@@ -136,6 +136,17 @@ export default class Background {
           sendResponse(Error.signatureError('signature_rejected', 'User rejected the signature request'))
         }
         const signedTransaction = await tronWeb.trx.signTransaction(mapped.transaction || mapped, this._currentPrivateKey(), 0)
+        const store = this._getLocalData()
+        // TriggerSmartContract
+        if (signedTransaction.raw_data.contract[0].type === 'TriggerSmartContract') {
+          let whiteList = store.wallet.whiteList.some(ele => {
+            return ele.domain === domain && ele.address === signedTransaction.raw_data.contract[0].parameter.value.contract_address
+          })
+          if (whiteList) {
+            sendResponse(signedTransaction)
+            return false
+          }
+        }
         NotificationService.open(new Prompt(PromptTypes.SIGNATURE, domain, {
           hostname: domain,
           signedTransaction,

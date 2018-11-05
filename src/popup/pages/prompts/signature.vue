@@ -67,6 +67,9 @@
           </section>
         </div>
       </div>
+      <el-checkbox class="join-option" v-if="data.type === 'TriggerSmartContract'" v-model="joinWhiteList">
+        {{$t('message.joinWhiteList')}}
+      </el-checkbox>
       <section class="prompt-actions">
         <el-button class="cancel-btn text-center" @click="denied">{{$t('button.reject')}}</el-button>
         <el-button class="confirm-btn text-center" type="primary" @click="accepted">{{$t('button.confirm')}}</el-button>
@@ -76,16 +79,18 @@
 </template>
 <script>
 import PerfectScrollbar from 'perfect-scrollbar'
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 import NotificationService from '../../../services/NotificationService'
 import utils from '../../../lib/utils'
+import IdGenerator from '../../../lib/IdGenerator'
 export default {
   data () {
     return {
       property: null,
       json: null,
       contract: null,
-      data: {}
+      data: {},
+      joinWhiteList: false
     }
   },
   computed: {
@@ -105,6 +110,9 @@ export default {
     })
   },
   methods: {
+    ...mapMutations('wallet', [
+      'addWhiteList'
+    ]),
     ...mapActions('wallet', [
       'pushPrompt'
     ]),
@@ -114,6 +122,17 @@ export default {
     },
     accepted () {
       const transaction = this.prompt.data.signedTransaction
+      if (this.joinWhiteList && this.data.type === 'TriggerSmartContract') {
+        // 加入白名单
+        let white = {
+          id: IdGenerator.numeric(24),
+          address: this.data.parameter.value.contract_address,
+          domain: this.prompt.domain,
+          createTime: this.$moment().format('x')
+        }
+        debugger
+        this.addWhiteList(white)
+      }
       this.prompt.responder({ accepted: true, transaction })
       NotificationService.close()
     },
@@ -163,4 +182,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "../../styles/prompt";
+  .join-option{
+    position: absolute;
+    bottom: 20px;
+  }
 </style>

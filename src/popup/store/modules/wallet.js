@@ -10,6 +10,7 @@ export default {
     accountNo: 1,
     lockTime: 60 * 30, // 30 minute will autolock
     accounts: [],
+    whiteList: [],
     prompt: null
   },
 
@@ -39,6 +40,15 @@ export default {
     removeAccount (state, account) {
       state.accounts = state.accounts.filter(ele => {
         return ele.address !== account.address
+      })
+    },
+    addWhiteList (state, white) {
+      console.log(white, 'white')
+      state.whiteList = [...state.whiteList, white]
+    },
+    removeWhiteList (state, white) {
+      state.whiteList = state.whiteList.filter(ele => {
+        return ele.id !== white.id
       })
     },
     pushPrompt (state, prompt) {

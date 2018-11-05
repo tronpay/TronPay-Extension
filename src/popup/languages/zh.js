@@ -50,6 +50,8 @@ module.exports = {
     privateKeyOnly: '私钥将是您找回账户的唯一方式',
     noMoreRecord: '无更多记录',
     noRecord: '无交易记录',
+    noWhiteList: '无白名单',
+    joinWhiteList: '添加白名单，此网站不再提示',
     warningPrivateKey: '安全警告：请勿向任何人泄露您的私钥',
     rechargeOnly: '此地址支持转入TRX及其token',
     verifyPassword: '需要先验证您的当前密码',
@@ -144,6 +146,7 @@ module.exports = {
   // settings
   settings: {
     network: '网络',
+    whiteList: '白名单',
     language: '语言',
     modifyPassword: '修改密码',
     lockSetting: '锁定设置',
