@@ -40,7 +40,7 @@ const _sign = tronWeb.trx.sign.bind(tronWeb)
 const _setAddress = tronWeb.setAddress.bind(tronWeb)
 const _setEventServer = tronWeb.setEventServer.bind(tronWeb)
 const _getEventResult = tronWeb.getEventResult.bind(tronWeb)
-const _getEventByTransacionID = tronWeb.getEventByTransacionID.bind(tronWeb)
+const _getEventByTransactionID = tronWeb.getEventByTransactionID.bind(tronWeb)
 
 const _subscribe = () => {
   stream.listenWith(msg => {
@@ -72,10 +72,10 @@ tronWeb.setEventServer = () => console.warn('Setting event server disabled in Tr
 
 Object.entries({
   getEventResult: _getEventResult,
-  getEventByTransacionID2: _getEventByTransacionID
+  getEventByTransactionID: _getEventByTransactionID
 }).forEach(([funcName, func]) => {
   tronWeb[funcName] = (...args) => {
-    if (!tronWeb.eventServer) return func(...args)
+    if (tronWeb.eventServer) return func(...args)
     let promise = false
     let success = false
     let failure = false
@@ -159,10 +159,6 @@ export default class Content {
       return console.warn('Failed to inject TronPay, The global namespace is exists')
     }
     window.tronPay = tronPay
-
-    if (window.tronWeb !== undefined) {
-      return console.warn('Failed to inject TronWeb, The global namespace is exists')
-    }
     window.tronWeb = tronWeb
     _subscribe()
   }

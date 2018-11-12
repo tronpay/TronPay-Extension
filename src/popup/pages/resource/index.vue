@@ -171,10 +171,10 @@ export default {
       this.pledgeVisible = false
       try {
         let transaction = await NewTronWeb().transactionBuilder.freezeBalance(
-          this.currentAccount.address,
           utils.getTokenRawAmount(this.pledgeForm.amount),
           3,
-          this.pledgeForm.type
+          this.pledgeForm.type,
+          this.currentAccount.address
         )
         // send to background
         const { result } = await InternalMessage.widthPayload(InternalMessageTypes.SIGNSENDTRANSACTION,
@@ -204,7 +204,7 @@ export default {
       this.$store.commit('loading', true)
       this.redeemVisible = false
       try {
-        let transaction = await NewTronWeb().transactionBuilder.unfreezeBalance(this.currentAccount.address)
+        let transaction = await NewTronWeb().transactionBuilder.unfreezeBalance('BANDWIDTH', this.currentAccount.address)
         const { result } = await InternalMessage.widthPayload(InternalMessageTypes.SIGNSENDTRANSACTION,
           {address: this.currentAccount.address, transaction: transaction})
           .send()

@@ -1,6 +1,6 @@
 {
   "name": "tronpay-extension",
-  "version": "1.0.5",
+  "version": "1.0.8",
   "description": "tronpay-extension",
   "author": "info@dappp.com",
   "license": "MIT",
@@ -27,7 +27,7 @@
     "lodash": "^4.17.4",
     "pbkdf2": "^3.0.17",
     "perfect-scrollbar": "^1.4.0",
-    "tronweb": "^2.0.15",
+    "tronweb": "^2.1.3",
     "uuid": "^3.3.2",
     "v-click-outside": "^2.0.1",
     "validator": "^10.8.0",

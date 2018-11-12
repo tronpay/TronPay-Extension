@@ -22,9 +22,9 @@ export default new Vuex.Store({
       id: 1,
       name: 'MainNet',
       transcanUrl: 'https://api.tronscan.org',
-      fullNodeUrl: 'https://mainnet.tronpay.me',
-      solidityUrl: 'https://mainnet.tronpay.me',
-      eventGridUrl: 'https://mainnet.tronpay.me',
+      fullNodeUrl: 'https://api.trongrid.io',
+      solidityUrl: 'https://api.trongrid.io',
+      eventGridUrl: 'https://api.trongrid.io',
       AccountDetailUrl: 'https://tronscan.org/#/address',
       HistoryDetailUrl: 'https://tronscan.org/#/transaction',
       type: 'MainNet'

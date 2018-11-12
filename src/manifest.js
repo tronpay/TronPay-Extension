@@ -1,7 +1,7 @@
 
 module.exports = {
   name: 'TronPay',
-  version: '1.0.5',
+  version: '1.0.8',
   description: 'TronPay Chrome Extension for TRON',
   author: 'info@dappp.com',
   manifest_version: 2,
